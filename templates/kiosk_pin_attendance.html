@@ -1,0 +1,37 @@
+﻿{% extends "kiosk_base.html" %}
+{% block title %}PIN Attendance{% endblock %}
+{% block content %}
+
+{% if message %}
+<div class="alert {% if success %}success{% else %}error{% endif %}">
+  {% if success %}
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+  {% else %}
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  {% endif %}
+  {{ message }}
+</div>
+{% endif %}
+
+<div class="form-card" style="margin: 0 auto;">
+  <form method="POST">
+    <div class="field">
+      <label for="employee_code">Employee ID</label>
+      <input type="text" id="employee_code" name="employee_code" placeholder="EMP002" required autofocus>
+    </div>
+    <div class="field">
+      <label for="pin">PIN</label>
+      <input type="password" id="pin" name="pin" placeholder="&bull;&bull;&bull;&bull;" required>
+    </div>
+    <button type="submit" class="btn" style="width: 100%;">Mark Attendance</button>
+  </form>
+</div>
+
+<div style="text-align: center;">
+  <a href="{{ url_for('attendance_portal') }}" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Back to Attendance Portal
+  </a>
+</div>
+
+{% endblock %}

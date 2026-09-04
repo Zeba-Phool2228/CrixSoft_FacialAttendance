@@ -1,0 +1,32 @@
+﻿{% extends "base.html" %}
+{% block title %}Employees{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1 class="page-title">Employees</h1>
+  <p class="page-sub">All enrolled employees, verification method, and today's attendance.</p>
+</div>
+
+<div class="row-list">
+  {% for e in employees %}
+  <div class="row-item">
+    <div class="row-main">
+      <div class="row-name">{{ e.name }}</div>
+      <div class="row-code mono">{{ e.employee_code }}{% if e.department %} &middot; {{ e.department }}{% endif %}{% if e.position %} &middot; {{ e.position }}{% endif %}{% if e.check_in_time %} &middot; checked in {{ e.check_in_time }}{% endif %}</div>
+    </div>
+    <div class="badge-group">
+      <span class="badge {{ e.verification_method }}">{{ e.verification_method }}</span>
+      <span class="badge {{ e.status }}">{{ e.status }}</span>
+      {% if e.check_in_time %}
+      <span class="badge present">Present</span>
+      {% else %}
+      <span class="badge absent">Absent</span>
+      {% endif %}
+    </div>
+  </div>
+  {% else %}
+  <div class="empty-state">No employees enrolled yet.</div>
+  {% endfor %}
+</div>
+
+{% endblock %}

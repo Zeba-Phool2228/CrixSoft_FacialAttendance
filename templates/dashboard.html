@@ -1,0 +1,58 @@
+﻿{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1 class="page-title">Dashboard</h1>
+  <p class="page-sub">{{ today }}</p>
+</div>
+
+<div class="stat-row">
+  <div class="stat">
+    <div class="stat-value accent">{{ total_employees }}</div>
+    <div class="stat-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      Total Employees
+    </div>
+  </div>
+  <div class="stat">
+    <div class="stat-value success">{{ present_today }}</div>
+    <div class="stat-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Present Today
+    </div>
+  </div>
+  <div class="stat">
+    <div class="stat-value danger">{{ absent_today }}</div>
+    <div class="stat-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+      Absent Today
+    </div>
+  </div>
+</div>
+
+<div class="section-heading">Today's Attendance</div>
+<div class="row-list">
+  {% for r in recent %}
+  <div class="row-item">
+    <div class="row-main">
+      <div class="row-name">{{ r.name }}</div>
+      <div class="row-code mono">{{ r.employee_code }}{% if r.check_in_time %} &middot; {{ r.check_in_time }}{% endif %}</div>
+    </div>
+    <div class="badge-group">
+      {% if r.method %}
+      <span class="badge {{ r.method }}">{{ r.method }}</span>
+      {% endif %}
+      {% if r.check_in_time %}
+      <span class="badge present">Present</span>
+      {% else %}
+      <span class="badge absent">Absent</span>
+      {% endif %}
+    </div>
+  </div>
+  {% else %}
+  <div class="empty-state">No employees enrolled yet.</div>
+  {% endfor %}
+</div>
+
+{% endblock %}

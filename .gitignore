@@ -1,0 +1,14 @@
+﻿venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+*.db
+uploads/*
+!uploads/.gitkeep
+data/employees/*
+!data/employees/.gitkeep
+embeddings/*
+!embeddings/.gitkeep
+.vscode/
+*.log

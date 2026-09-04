@@ -1,0 +1,21 @@
+﻿{% extends "kiosk_base.html" %}
+{% block title %}Face Attendance{% endblock %}
+{% block content %}
+
+<div class="camera-container">
+  <video id="video-preview" autoplay muted playsinline></video>
+  <div class="camera-overlay"></div>
+</div>
+
+<div id="status-box" class="status-box">Starting camera...</div>
+
+<div style="text-align: center;">
+  <a href="{{ url_for('attendance_portal') }}" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Back to Attendance Portal
+  </a>
+</div>
+
+<script src="{{ url_for('static', filename='js/face_attendance.js') }}"></script>
+
+{% endblock %}
