@@ -1,5 +1,4 @@
-````markdown
-# Facial Recognition Employee Attendance System
+﻿# Facial Recognition Employee Attendance System
 
 An AI-powered employee attendance management system that uses facial recognition to automatically identify registered employees and record their attendance in real time, while providing a secure PIN-based alternative for employees who prefer not to use face-based attendance.
 
@@ -58,7 +57,7 @@ Recognition threshold is applied
 Registered + active employee identified
             ↓
 Attendance is recorded
-````
+```
 
 The system does not simply mark attendance for any face detected by the camera.
 
@@ -647,6 +646,3 @@ The project demonstrates how AI-based identity recognition can be integrated wit
 BS Information Technology
 
 **Project:** Facial Recognition Employee Attendance System
-
-```
-```
